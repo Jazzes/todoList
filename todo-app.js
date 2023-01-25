@@ -119,13 +119,11 @@
       let array = JSON.parse(localStorage.getItem(key))
       for (let i = 0; i !== array.length; ++i) {
         todoArray.push(array[i])
+        let [todoItem, todoDoneButton, todoDeleteButton] = createTodoItem(todoArray[i].name, todoArray[i].done, todoArray[i].id, false)
+        addTodo(todoItem, todoDoneButton, todoDeleteButton, todoList, key)
       }
     }
 
-    for (let i = 0; i < todoArray.length; ++i){
-      let [todoItem, todoDoneButton, todoDeleteButton] = createTodoItem(todoArray[i].name, todoArray[i].done, todoArray[i].id, false)
-      addTodo(todoItem, todoDoneButton, todoDeleteButton, todoList, key)
-    }
     form.addEventListener('submit', function (e) {
       e.preventDefault()
 
